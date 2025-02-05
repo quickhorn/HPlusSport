@@ -4,7 +4,7 @@ namespace HPlusSport.API.Models
 {
     public class Product
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Sku { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -12,6 +12,7 @@ namespace HPlusSport.API.Models
         public int CategoryId { get; set; }
         [JsonIgnore]
         public virtual Category Category { get; set; }
+        public bool IsAvailable { get; set; }
 
     }
 }
