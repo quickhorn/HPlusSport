@@ -11,7 +11,7 @@ namespace HPlusSport.API.Controllers
         [Route("/Products")]
         public void GetProducts()
         {
-            
+
         }
 
         [HttpGet]
