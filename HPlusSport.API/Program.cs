@@ -30,4 +30,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapGet("/products", async (ShopContext context) =>
+{
+    return  Results.Ok(await context.Products.ToArrayAsync());
+});
+
 app.Run();
