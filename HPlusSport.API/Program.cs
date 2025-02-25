@@ -1,4 +1,5 @@
 using HPlusSport.API.Models;
+using HPlusSport.API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<ShopContext>(options =>
     options.UseInMemoryDatabase("Shop");
 });
 
+builder.Services.AddScoped<IProductsService, ProductsService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,10 +32,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.MapGet("/products", async (ShopContext context) =>
-{
-    return  Results.Ok(await context.Products.ToArrayAsync());
-});
 
 app.Run();
